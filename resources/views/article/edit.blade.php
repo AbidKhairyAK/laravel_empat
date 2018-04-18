@@ -4,16 +4,17 @@
 	@endforeach
 </ul>
 <br>
-<form action="{{url('article/edit')}}" method="post">
+<form action="{{route('blog.update',$article->id)}}" method="post">
+	{{ method_field('PATCH') }}
 	<input type="hidden" name="id" value="{{$article->id}}">
 	<table>
 		<tr>
 			<td>Title</td>
-			<td><input type="text" name="title" value="{{$article->title}}"></td>
+			<td><input type="text" name="title" value="{{$article->title}}"> {{$errors->first('title')}}</td>
 		</tr>
 		<tr>
 			<td>Content</td>
-			<td><textarea name="content">{{$article->content}}</textarea></td>
+			<td><textarea name="content">{{$article->content}}</textarea> {{$errors->first('content')}}</td>
 		</tr>
 		{{csrf_field()}}
 		<tr>

@@ -13,14 +13,15 @@
 </head>
 <body>
 	<br>
-	<a href="{{url('article/create')}}">Create Article</a>
+	<!-- <a href="{{url('article/create')}}">Create Article</a> -->
+	<a href="{{route('blog.create')}}">Create Article</a>
 	<br>
 	<br>
 	<table>
 		<tr>
 			<th>#</th>
 			<th>Title</th>
-			<th>Created at</th>
+			<th>Date</th>
 			<th>Option</th>
 		</tr>
 		<?php $no=1; ?>
@@ -29,11 +30,16 @@
 		<tr>
 			<td> {{$no++}} </td>
 			<td> {{$row->title}} </td>
-			<td> {{$row->created_at}} </td>
+			<td> {{date('d M Y H:i',strtotime($row->created_at))}} </td>
 			<td>
-				<a href="{{url('article/show/'.$row->id)}}">Detail</a> | 
-				<a href="{{url('article/edit/'.$row->id)}}">Edit</a> | 
-				<a href="{{url('article/delete/'.$row->id)}}">Delete</a> 
+				<a href="{{route('blog.show',$row->id)}}">Detail</a> | 
+				<a href="{{route('blog.edit',$row->id)}}">Edit</a> | 
+				<!-- <a href="{{route('blog.destroy',$row->id)}}">Delete</a>  -->
+				<form action="{{route('blog.destroy',$row->id)}}" method="post">
+					{{csrf_field()}}
+					{{ method_field('DELETE') }}
+					<button type="submit">Delete</button>
+				</form>
 			</td>
 		</tr>
 

@@ -1,18 +1,18 @@
-<ul>
+<!-- <ul>
 	@foreach($errors->all() as $row)
 		<li> {{$row}} </li>
 	@endforeach
-</ul>
+</ul> -->
 <br>
-<form action="{{url('article/create')}}" method="post">
+<form action="{{route('blog.store')}}" method="post">
 	<table>
 		<tr>
 			<td>Title</td>
-			<td><input type="text" name="title"></td>
+			<td><input type="text" name="title"> {{$errors->first('title')}} </td>
 		</tr>
 		<tr>
 			<td>Content</td>
-			<td><textarea name="content"></textarea></td>
+			<td><textarea name="content"></textarea> {{$errors->first('content')}} </td>
 		</tr>
 		{{csrf_field()}}
 		<tr>
