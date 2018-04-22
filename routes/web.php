@@ -11,14 +11,4 @@
 |
 */
 
-// use App\Http\Middleware\CheckAge;
-
-// Route::get('/', function () {
-//     return 'ini Facebook';
-// })->middleware(CheckAge::class);
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::resource('blog','BlogController');
+Route::resource('mahasiswa','MahasiswaController');
