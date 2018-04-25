@@ -1,2 +1,2 @@
-# laravel_satu
-# laravel_dua
+# Mensyukuri Hari Ini
+# Mengikhlaskan Yang Telah Berlalu~
