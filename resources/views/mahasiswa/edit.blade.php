@@ -6,7 +6,7 @@
 
 <div class="container-fluid">
 	<a href="{{route('mahasiswa.index')}}" class="btn btn-default">Back to Home</a><br><br>
-	<form class="form-horizontal" action="{{route('mahasiswa.store')}}" method="post">
+	<form class="form-horizontal" action="{{route('mahasiswa.update',$mahasiswa->id)}}" method="post">
 		<input type="hidden" name="id" value="{{$mahasiswa->id}}">
 		<div class="form-group">
 			<label class="control-label col-sm-2">First Name </label>
