@@ -12,3 +12,5 @@
 */
 
 Route::resource('mahasiswa','MahasiswaController');
+
+Route::view('tes','admin.layouts.app');

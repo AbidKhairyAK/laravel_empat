@@ -39,8 +39,8 @@ class MahasiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'first_name' => 'required|min:20',
-            'last_name' => 'required|min:20',
+            'first_name' => 'required|min:3',
+            'last_name' => 'required|min:3',
             'email' => 'required|email|unique:mahasiswa,email',
             'password' => 'required|min:8',
             'jenis_kelamin' => 'required',
@@ -95,8 +95,8 @@ class MahasiswaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'first_name' => 'required|min:20',
-            'last_name' => 'required|min:20',
+            'first_name' => 'required|min:3',
+            'last_name' => 'required|min:3',
             'password' => 'required|min:8',
             'jenis_kelamin' => 'required',
             'alamat' => 'required',

@@ -1,28 +1,15 @@
-<head>
-	<style type="text/css">
-		td,th {
-			padding: 5px 10px;
-		}
-		tr:nth-child(even) {
-			background: #ddd;
-		}
-		tr:nth-child(odd) {
-			background: #eee;
-		}
-		form {
-			display: inline;
-		}
-		button {
-			cursor: pointer;
-		}
-	</style>
-</head>
-<body>
-	<br>
-	<a href="{{route('mahasiswa.create')}}"><button>Create Mahasiswa</button></a>
+@extends('admin.layouts.app')
+
+@section('title','Data Mahasiswa')
+
+@section('content')
+  <div class="container-fluid">
+	<a href="{{route('mahasiswa.create')}}" class="btn btn-primary">Tambah Mahasiswa</a>
 	<br>
 	<br>
-	<table>
+	<table class="table table-bordered table-hover">
+
+		<thead>
 		<tr>
 			<th>#</th>
 			<th>Nama</th>
@@ -31,6 +18,9 @@
 			<th>Agama ID</th>
 			<th>Options</th>
 		</tr>
+		</thead>
+
+		<tbody>
 		<?php $no=1; ?>
 		@foreach($mahasiswa as $row)
 
@@ -41,17 +31,18 @@
 			<td> {{date("d M Y",strtotime($row->tanggal_lahir))}} </td>
 			<td> {{$row->agama_id}} </td>
 			<td>
-				<a href="{{route('mahasiswa.show',$row->id)}}"><button>Detail</button></a> | 
-				<a href="{{route('mahasiswa.edit',$row->id)}}"><button>Edit</button></a> | 
-				<form action="{{route('mahasiswa.destroy',$row->id)}}" method="post">
+				<a href="{{route('mahasiswa.show',$row->id)}}" class="btn btn-xs btn-success">Detail</a> | 
+				<a href="{{route('mahasiswa.edit',$row->id)}}" class="btn btn-xs btn-primary">Edit</a> | 
+				<form action="{{route('mahasiswa.destroy',$row->id)}}" method="post" style="display: inline;">
 					{{csrf_field()}}
 					{{ method_field('DELETE') }}
-					<button type="submit">Delete</button>
+					<button type="submit" class="btn btn-xs btn-danger">Delete</button>
 				</form>
 			</td>	
 		</tr>
 
 		@endforeach
+		</tbody>
 	</table>
 
 	<br><br>
@@ -59,4 +50,5 @@
 	@if(Session::has('mahasiswa'))
 		{{Session::get('mahasiswa')}}
 	@endif
-</body>
+  </div>
+@endsection
